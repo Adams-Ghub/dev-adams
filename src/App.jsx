@@ -1,78 +1,64 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import Intro from './pages/Intro';
+import { LiaUser, LiaHomeSolid, LiaTimesSolid } from 'react-icons/lia';
+import { PiBriefcaseLight, PiChatCircleDotsLight } from 'react-icons/pi';
+import { FaBarsStaggered } from 'react-icons/fa6';
+import logo from '../public/Logo.png';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
 
-function App() {
-  const [fireflies, setFireflies] = useState([]);
+const App = () => {
+  const [hidden, setHidden] = useState(true);
 
-  useEffect(() => {
-    const flyingInterval = setInterval(() => {
-      let newFireflies = [...fireflies];
-      const angle = randNum(0, 361);
-      const dist = randNum(100, 450);
-      const wWidth = window.innerWidth;
-      const wHeight = window.innerHeight;
-      const toX = Math.cos((angle * Math.PI) / 180) * dist;
-      const toY = Math.sin((angle * Math.PI) / 180) * (dist / 1.5);
-      const color = [randNum(40, 80), randNum(100, 140), randNum(120, 160)];
-      const startPos = [randNum(0, wWidth), randNum(0, wHeight)];
-
-      console.log('New firefly:', { color, startPos, toX, toY });
-
-      newFireflies.push({ color, startPos, toX, toY });
-
-      setFireflies(newFireflies);
-
-      // Remove fireflies after animation
-      setTimeout(() => {
-        setFireflies((prevFireflies) => prevFireflies.slice(1));
-      }, 7000);
-    }, 100);
-
-    // Cleanup function to clear interval
-    return () => clearInterval(flyingInterval);
-  }, [fireflies]);
-
-  useEffect(() => {
-    // Hide title after 4 seconds
-    const titleTimeout = setTimeout(() => {
-      document.querySelector('.pageTop h1').style.opacity = 0;
-    }, 4000);
-
-    // Cleanup function to clear timeout
-    return () => clearTimeout(titleTimeout);
-  }, []);
-
-  const randNum = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
+  const handleToggleMenu = () => {
+    setHidden(!hidden);
   };
 
   return (
-    <div className="bg-[#141414] flex flex-row">
-      <div className="w-[20%]"></div>
-      <div className='w-[80%'>
-        <div className="backDrop">
-          {fireflies.map((firefly, index) => (
-            <div
-              key={index}
-              className="pixel"
-              style={{
-                backgroundColor: `rgba(${firefly.color[0]}, ${firefly.color[1]}, ${firefly.color[2]}, 0.65)`,
-                top: firefly.startPos[1] + 'px',
-                left: firefly.startPos[0] + 'px',
-                boxShadow: `0px 0px 7px 7px rgba(${firefly.color[0] - 5}, ${
-                  firefly.color[1] - 5
-                }, ${firefly.color[2] - 5}, 0.25)`,
-              }}
-            ></div>
-          ))}
-        </div>
+    <div className=" flex flex-row h-full ">
+      <a
+        onClick={handleToggleMenu}
+        className="bg-transparent fixed top-0 z-10 md:hidden p-[0.6rem]"
+      >
+        <FaBarsStaggered className="text-[2rem] text-[#02A2A2]" />
+      </a>
 
-        <div className="pageTop">
-          <h1>Fireflies!</h1>
+      <div
+        className={`${
+          hidden ? 'hidden md:block' : 'md:block'
+        } w-[20%] sm:w-[10%] md:w-[10%] fixed top-0 left-0 z-10 md:static  bg-[#0a0f14] border-solid border-r border-r-[#3D3D3D]`}
+      >
+        <div className="flex flex-col justify-start gap-[2.5rem] 2xl:gap-[4.5rem] md:pt-[3rem] md:2xl:pt-[4.5rem] items-center h-screen sticky top-0">
+          <a
+            onClick={handleToggleMenu}
+            className="bg-transparent self-end px-[0.5rem] py-[0.5rem] md:hidden"
+          >
+            <LiaTimesSolid className="text-[1.2rem] text-[#707070]" />
+          </a>
+          <img src={logo} className="w-[3rem] h-[3rem] 2xl:w-[4.5rem] 2xl:h-[4.5rem]" alt="logo" />
+          <a href="/#headline" className="bg-transparent ">
+            <LiaHomeSolid className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+          </a>
+          <a href="/#About" className="bg-transparent">
+            <LiaUser className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+          </a>
+          <a href="/#Projects" className="bg-transparent">
+            <PiBriefcaseLight className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+          </a>
+          <a href="/#Contact" className="bg-transparent">
+            <PiChatCircleDotsLight className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+          </a>
         </div>
+      </div>
+      <div className="w-[100%] md:[80%]">
+        <Intro />
+        <About />
+        <Projects />
+        <Contact />
       </div>
     </div>
   );
-}
+};
 
 export default App;
