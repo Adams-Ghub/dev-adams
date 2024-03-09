@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LiaLinkedin } from 'react-icons/lia';
-import { FaGitAlt, FaSquareFacebook } from 'react-icons/fa6';
+import { FaSquareGithub, FaSquareFacebook } from 'react-icons/fa6';
+
 import '../App.css';
 
 const Intro = () => {
@@ -68,33 +69,33 @@ const Intro = () => {
       <div className="pageTop">
         <h1
           id="headline"
-          className="text-[3rem] md:text-[3.5rem] text-[#ffffff]"
+          className="text-[3rem] md:text-[3.5rem] 2xl:text-[5rem] text-[#ffffff]"
         >
           Adams Bamfo
         </h1>
-        <p className="text-[#ffffff] w-[20rem] sm:w-[25rem] text-center font-thin text-[1rem] leading-tight py-[1rem]">
+        <p className="text-[#ffffff] w-[20rem] sm:w-[25rem] xl:w-[30rem] 2xl:w-[45rem] text-center font-thin text-[1rem] xl:text-[1.25rem] 2xl:text-[1.75rem] leading-tight py-[1rem]">
           A Full-Stack Developer passionate about crafting web and mobile
           solutions that change the lives of humanity for the better.
         </p>
-        <div className="flex flex-row items-center mb-[1rem]">
+        <div className="flex flex-row items-center mb-[1rem] gap-[0.5rem] 2xl:gap-[1.25rem]">
           <a
             href="https://www.linkedin.com/in/adams-bamfo/"
             target="_blank"
             className=""
           >
-            <LiaLinkedin className="text-[#707070] text-[2.5rem] hover:text-[#f5f5f5]" />
+            <LiaLinkedin className="text-[#707070] text-[2.5rem] 2xl:text-[4rem] hover:text-[#f5f5f5]" />
           </a>
           <a href="https://github.com/Adams-Ghub" target="_blank" className="">
-            <FaGitAlt className="text-[#707070] text-[2rem] hover:text-[#f5f5f5]" />
+            <FaSquareGithub className="text-[#707070] text-[2rem] 2xl:text-[3rem] hover:text-[#f5f5f5]" />
           </a>
           <a href="#" className="">
-            <FaSquareFacebook className="text-[#707070] text-[2rem] hover:text-[#f5f5f5]" />
+            <FaSquareFacebook className="text-[#707070]  text-[2rem] 2xl:text-[3rem] hover:text-[#f5f5f5]" />
           </a>
         </div>
         <div>
           <a
             href="/#Contact"
-            className="border-solid border rounded-sm flex flex-col items-center justify-center w-[8rem] py-[0.25rem] px-[1.5rem] text-[#ffffff]"
+            className="border-solid border rounded-sm flex flex-row items-center justify-center w-[8rem] 2xl:w-[13rem] py-[0.25rem] px-[1.5rem] text-[#ffffff] text-center 2xl:text-[1.75rem]"
           >
             contact
           </a>
