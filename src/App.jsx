@@ -10,10 +10,23 @@ import Contact from './pages/Contact';
 
 const App = () => {
   const [hidden, setHidden] = useState(true);
+  const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
   const handleToggleMenu = () => {
     setHidden(!hidden);
   };
+
+  const handleUrlChange = () => {
+    setCurrentUrl(window.location.href);
+  };
+
+  useEffect(() => {
+    window.addEventListener('hashchange', handleUrlChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
+  }, []);
 
   return (
     <div className=" flex flex-row h-full ">
@@ -21,7 +34,7 @@ const App = () => {
         onClick={handleToggleMenu}
         className="bg-transparent fixed top-0 z-10 md:hidden p-[0.6rem]"
       >
-        <FaBarsStaggered className="text-[2rem] text-[#02A2A2]" />
+        <FaBarsStaggered className="text-[2rem] font-thin text-[#02A2A2]" />
       </a>
 
       <div
@@ -36,17 +49,39 @@ const App = () => {
           >
             <LiaTimesSolid className="text-[1.2rem] text-[#707070]" />
           </a>
-          <img src={logo} className="w-[3rem] h-[3rem] 2xl:w-[4.5rem] 2xl:h-[4.5rem]" alt="logo" />
-          <a href="/#headline" className="bg-transparent ">
-            <LiaHomeSolid className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+          <img
+            src={logo}
+            className="w-[3rem] h-[3rem] 2xl:w-[4.5rem] 2xl:h-[4.5rem]"
+            alt="logo"
+          />
+          <a
+            href="/#headline"
+            className="bg-transparent"
+            onClick={handleToggleMenu}
+          >
+            <LiaHomeSolid className={`text-[2rem] 2xl:text-[3.5rem] ${currentUrl.includes('/#headline')?'text-[#f5f5f5]':'text-[#707070]'} text-[#707070] hover:text-[#f5f5f5]`} />
           </a>
-          <a href="/#About" className="bg-transparent">
-            <LiaUser className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+          <a
+            href="/#About"
+            className="bg-transparent"
+            onClick={handleToggleMenu}
+          >
+            <LiaUser
+              className={`text-[2rem] 2xl:text-[3.5rem] ${currentUrl.includes('/#About')?'text-[#f5f5f5]':'text-[#707070]'}  hover:text-[#f5f5f5]`}
+            />
           </a>
-          <a href="/#Projects" className="bg-transparent">
+          <a
+            href="/#Projects"
+            className="bg-transparent"
+            onClick={handleToggleMenu}
+          >
             <PiBriefcaseLight className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
           </a>
-          <a href="/#Contact" className="bg-transparent">
+          <a
+            href="/#Contact"
+            className="bg-transparent"
+            onClick={handleToggleMenu}
+          >
             <PiChatCircleDotsLight className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
           </a>
         </div>
