@@ -48,7 +48,7 @@ const Intro = () => {
   };
 
   return (
-    <div id="headline" className="h-screen">
+    <div id="headline" className="h-screen flex">
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-[#0a0f14] overflow-hidden">
         {fireflies.map((firefly, index) => (
           <div
@@ -66,14 +66,14 @@ const Intro = () => {
         ))}
       </div>
 
-      <div className="pageTop">
+      <div className="pageTop  self-center">
         <h1
           id="headline"
           className="text-[3rem] md:text-[3.5rem] 2xl:text-[5rem] text-[#ffffff]"
         >
           Adams Bamfo
         </h1>
-        <p className="text-[#ffffff] w-[20rem] sm:w-[25rem] xl:w-[30rem] 2xl:w-[45rem] text-center font-thin text-[1rem] xl:text-[1.25rem] 2xl:text-[1.75rem] leading-tight py-[1rem]">
+        <p className="text-white w-[20rem] sm:w-[25rem] xl:w-[30rem] 2xl:w-[45rem] text-center font-thin text-[1rem] xl:text-[1.25rem] 2xl:text-[1.75rem] leading-tight py-[1rem]">
           A Full-Stack Developer passionate about crafting web and mobile
           solutions that change the lives of humanity for the better.
         </p>
