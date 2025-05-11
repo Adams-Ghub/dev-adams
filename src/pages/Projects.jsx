@@ -1,12 +1,14 @@
 import React from 'react';
 import ProjectCard from '../compents/ProjectCard';
+import { projects } from '../compents/constants';
 
 const Projects = () => {
   const headingTwo = 'text-[2.75rem] text-[#02B6B6]';
   const headingThree = 'text-[1.5rem] text-[#02B6B6]';
   const buttonStyle = "outline-none border-none text-[1rem] sm:text-[1.5rem]";
+  const projectImg = 'https://plus.unsplash.com/premium_photo-1706259481452-f857c96ceaca?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvamVjdCUyMG1hbmFnZW1lbnR8ZW58MHx8MHx8fDA%3D'
 
-  const projects = [1, 2, 3, 4, 5, 6];
+
 
   return (
     <div className='bg-[#0a0f14] w-full h-auto py-[4rem] sm:px-[2.5rem]'>
@@ -25,7 +27,7 @@ const Projects = () => {
           projects.map((project, index) => {
             return (
 
-              <ProjectCard number={index + 1} />
+              <ProjectCard number={index + 1} image={project.image} title={project.title} description={project.description} demo={project.demo} codes={project.codes} />
 
             )
           })
