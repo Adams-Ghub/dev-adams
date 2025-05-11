@@ -75,14 +75,14 @@ const App = () => {
             className="bg-transparent"
             onClick={handleToggleMenu}
           >
-            <PiBriefcaseLight className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+            <PiBriefcaseLight className={`text-[2rem] 2xl:text-[3.5rem] ${currentUrl.includes('/#Project')?'text-[#f5f5f5]':'text-[#707070]'}  text-[#707070] hover:text-[#f5f5f5]`} />
           </a>
           <a
             href="/#Contact"
             className="bg-transparent"
             onClick={handleToggleMenu}
           >
-            <PiChatCircleDotsLight className="text-[2rem] 2xl:text-[3.5rem] text-[#707070] hover:text-[#f5f5f5]" />
+            <PiChatCircleDotsLight className={`text-[2rem] 2xl:text-[3.5rem] ${currentUrl.includes('/#Contact')?'text-[#f5f5f5]':'text-[#707070]'}  text-[#707070] hover:text-[#f5f5f5]`} />
           </a>
         </div>
       </div>
